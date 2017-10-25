@@ -43,6 +43,7 @@ function formatSelection() {
     return HTML;
 }
 
+// this function checks that both players have selected a ninja before fading the selection box
 function checker() {
     if ($('#left_player').attr('src') !== '' && $('#right_player').attr('src') !== ''
         && $('#left_player').attr('src') !== undefined && $('#right_player').attr('src') !== undefined) {
