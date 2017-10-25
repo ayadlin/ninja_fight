@@ -43,6 +43,13 @@ function formatSelection() {
     return HTML;
 }
 
+function checker() {
+    if ($('#left_player').attr('src') !== '' && $('#right_player').attr('src') !== ''
+        && $('#left_player').attr('src') !== undefined && $('#right_player').attr('src') !== undefined) {
+        $('#selector').remove();
+    }
+}
+
 //this handler makes sure that jQuery notices that there is a select tag that was 
 //dynamically chosen
 function selectionHandler() {
@@ -51,27 +58,27 @@ function selectionHandler() {
         if (ninja != null) ninja = ninja.toLowerCase() + '.png';
         var curPlayer = $(this).attr('name');
         if (curPlayer === 'player1') {
-            if($('#left_player').attr('src') != ninja){
-            $('#left_player').fadeOut(function(){
-                $('#left_player').attr('src', ninja);
-                $('#left_player').attr('alt', ninja);
-                $(this).fadeIn();
-            });
-        }
+            if ($('#left_player').attr('src') != ninja) {
+                $('#left_player').fadeOut(function () {
+                    $('#left_player').attr('src', ninja);
+                    $('#left_player').attr('alt', ninja);
+                    $(this).fadeIn(function () {
+                        checker();
+                    });
+                });
+            }
         } else {
-            if($('#right_player').attr('src') != ninja) {
-            $('#right_player').fadeOut(function(){
-                $('#right_player').attr('src', ninja);
-                $('#right_player').attr('alt', ninja);
-                $('#right_player').fadeIn();
-            });
-        }
+            if ($('#right_player').attr('src') != ninja) {
+                $('#right_player').fadeOut(function () {
+                    $('#right_player').attr('src', ninja);
+                    $('#right_player').attr('alt', ninja);
+                    $('#right_player').fadeIn(function () {
+                        checker();
+                    });
+                });
+            }
         }
         console.log($('#left_player').attr('src'), $('#right_player').attr('src'));
-        if ($('#left_player').attr('src') !== '' && $('#right_player').attr('src') !== ''
-            && $('#left_player').attr('src') !== undefined && $('#right_player').attr('src') !== undefined) {
-            $('#selector').remove();
-        }
     });
 }
 
