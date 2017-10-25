@@ -51,19 +51,21 @@ function selectionHandler() {
         if (ninja != null) ninja = ninja.toLowerCase() + '.png';
         var curPlayer = $(this).attr('name');
         if (curPlayer === 'player1') {
-            if($('#left_player').attr('src') == ninja) return;
+            if($('#left_player').attr('src') != ninja){
             $('#left_player').fadeOut(function(){
                 $('#left_player').attr('src', ninja);
                 $('#left_player').attr('alt', ninja);
                 $(this).fadeIn();
             });
+        }
         } else {
-            if($('#right_player').attr('src') == ninja) return;
+            if($('#right_player').attr('src') != ninja) {
             $('#right_player').fadeOut(function(){
                 $('#right_player').attr('src', ninja);
                 $('#right_player').attr('alt', ninja);
                 $('#right_player').fadeIn();
             });
+        }
         }
         console.log($('#left_player').attr('src'), $('#right_player').attr('src'));
         if ($('#left_player').attr('src') !== '' && $('#right_player').attr('src') !== ''
