@@ -1,3 +1,4 @@
+//object of background images
 var bg = {
     "beach": "url(beach.jpg)",
     "dojo": "url(dojo.jpg)",
@@ -6,6 +7,8 @@ var bg = {
     "snow": "url(snow.jpg)",
     "forest": "url(forest.jpg)"
 };
+
+//object of different available players
 var players = {
     "Leo": "url(leo.png)",
     "Mikey": "url(mikey.png)",
@@ -13,6 +16,7 @@ var players = {
     "Donny": "url(donny.png)"
 };
 
+//formats an inputed string to be ready to get injected into the DOM
 function formatOption(str) {
     var s = '<option value="' + str + '">';
     s += str;
@@ -20,7 +24,7 @@ function formatOption(str) {
     return s;
 }
 
-
+//formats the current players to be injected into the DOM
 function formatSelection() {
     var HTML = '<h1 id="select_title">Select Players</h1>';
     var select1HTML = '<select name="player1" value="select ninja">';
@@ -39,6 +43,8 @@ function formatSelection() {
     return HTML;
 }
 
+//this handler makes sure that jQuery notices that there is a select tag that was 
+//dynamically chosen
 function selectionHandler() {
     $('select').click(function () {
         var ninja = $(this).val();
@@ -68,15 +74,20 @@ function selectionHandler() {
 }
 
 $(document).ready(function () {
+
+    //changes original black background when hovering on and off
     $('button').hover(function () {
         var att = $(this).attr('id');
         $(this).parent().parent().css('background', bg[$(this).attr('id')]);
+        //size is 116% to adjust for some images not being the correct width:height ratio
         $(this).parent().parent().css('background-size', '116%');
     }, function () {
         $(this).parent().parent().css('background', 'black');
         $(this).parent().parent().css('background-size', '116%');
     });
 
+    //when a button is clicked, its permanently sets the background and
+    //injects the html required for the selection tags
     $('button').click(function () {
         var t = $(this);
         var parent = $(this).parent();

@@ -17,11 +17,14 @@ select{
     margin-right: 1vw;
     margin-left: 1vw;
 }
+/* To scale all images the same */
 img{
     position: absolute;
     display: inline-block;
     width: 11vw;
 }
+
+/* Shifts images to proper positions */
 #left_player{
     margin-left: -37vw;
     margin-top: 26vh;
@@ -31,6 +34,8 @@ img{
     margin-left: 37vw;
     margin-top: 26vh; 
 }
+
+/* Sets up everything that will happen */
 #canvas{
     justify-content: center;
     align-items: center;
@@ -43,6 +48,8 @@ img{
     background-size: 116%;
     border: 1vh solid grey;
 }
+
+/* Sets up the selector */
 #selector{
     width: 23vw;
     height: 26vh;
