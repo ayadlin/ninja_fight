@@ -45,12 +45,19 @@ function selectionHandler() {
         if (ninja != null) ninja = ninja.toLowerCase() + '.png';
         var curPlayer = $(this).attr('name');
         if (curPlayer === 'player1') {
-            $('#left_player').attr('src', ninja);
-            $('#left_player').attr('alt', ninja);
-
+            if($('#left_player').attr('src') == ninja) return;
+            $('#left_player').fadeOut(function(){
+                $('#left_player').attr('src', ninja);
+                $('#left_player').attr('alt', ninja);
+                $(this).fadeIn();
+            });
         } else {
-            $('#right_player').attr('src', ninja);
-            $('#right_player').attr('alt', ninja);
+            if($('#right_player').attr('src') == ninja) return;
+            $('#right_player').fadeOut(function(){
+                $('#right_player').attr('src', ninja);
+                $('#right_player').attr('alt', ninja);
+                $('#right_player').fadeIn();
+            });
         }
         console.log($('#left_player').attr('src'), $('#right_player').attr('src'));
         if ($('#left_player').attr('src') !== '' && $('#right_player').attr('src') !== ''
